@@ -3,12 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_post/app/routes/app_pages.dart';
 
-import '../controllers/home_controller.dart';
+import '../controllers/detail_article_controller.dart';
 
-class HomeView extends GetView<HomeController> {
-  //bcz using the easy splash screen and cant use the get method, so i prefer the Get.put() right here
-  HomeController homeController = Get.put(HomeController());
-
+class DetailArticleView extends GetView<DetailArticleController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +22,7 @@ class HomeView extends GetView<HomeController> {
           )
           ),
         title: Text(
-          'StarNews',
+          'Detail News',
           style: TextStyle(
             color: Colors.black,
             fontSize: 26
@@ -36,10 +33,10 @@ class HomeView extends GetView<HomeController> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
         child: ListView.builder(
-          itemCount: homeController.titles.length, //<< fill with controller listener
+          itemCount: controller.titles.length, //<< fill with controller listener
           itemBuilder: (context, index){
             return Padding(
-              padding: const EdgeInsets.only(bottom: 20),
+              padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15)
@@ -48,20 +45,17 @@ class HomeView extends GetView<HomeController> {
                 color: Color(0xFFD9D9D9),
                 child: ListTile(
                   contentPadding: EdgeInsets.only(left: 19, top: 26, bottom: 16, right: 19),
-                  onTap: (){
-                    Get.toNamed(Routes.DETAIL_ARTICLE);
-                  },
+                  onTap: (){},
                   title: Padding(
                     padding: const EdgeInsets.only(bottom: 15),
-                    child: Text(homeController.titles[index], 
+                    child: Text(controller.titles[index], 
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 22,
                       fontWeight: FontWeight.bold
                     ),),
                   ),
-                  subtitle: Text(homeController.subtitles[index],
-                  overflow: TextOverflow.ellipsis,
+                  subtitle: Text(controller.subtitles[index],
                   style: TextStyle(
                     color: Colors.black,
                     fontSize: 18,
@@ -71,15 +65,7 @@ class HomeView extends GetView<HomeController> {
             );
           }
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: (){
-          Get.toNamed(Routes.POST_ARTICLE);
-        },
-        child: Icon(Icons.add),
-        // backgroundColor: Color(0xFFD9D9D9),
-        backgroundColor: Colors.red,
-        ),
+      )
     );
   }
 }
