@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:getx_post/app/data/news_service.dart';
 import 'package:getx_post/app/data/post_news_service.dart';
+import 'package:logger/logger.dart';
 
 class PostArticleController extends GetxController {
   FocusNode nodeTwo = FocusNode();
@@ -22,7 +23,7 @@ class PostArticleController extends GetxController {
     try {
       final response =
           await postNewsService.postNews(title: postTitle.text, desc: postDesc.text);
-      print(response);
+      Logger().d(response);
       isLoading(false);
       Get.back();
     } catch (e) {

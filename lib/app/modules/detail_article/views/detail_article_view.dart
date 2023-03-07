@@ -8,6 +8,7 @@ class DetailArticleView extends GetView<DetailArticleController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         backgroundColor: Colors.white,
         leading: IconButton(
@@ -25,7 +26,6 @@ class DetailArticleView extends GetView<DetailArticleController> {
         ),
       ),
       body: Container(
-        width: Get.width,
         margin: EdgeInsets.all(24),
         decoration: BoxDecoration(
             color: Color(0xFFD9D9D9), borderRadius: BorderRadius.circular(15),
@@ -39,7 +39,10 @@ class DetailArticleView extends GetView<DetailArticleController> {
         padding: EdgeInsets.symmetric(vertical: 25, horizontal: 20),
         child: Obx(
           () => ListTile(
-            title: Text(controller.detailNews.value.title ?? '', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+            title: Padding(
+              padding: const EdgeInsets.only(bottom: 15),
+              child: Text(controller.detailNews.value.title ?? '', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+            ),
           subtitle: Text(controller.detailNews.value.body ?? '', style: TextStyle(color: Colors.black, fontSize: 16)),
           )
           ),

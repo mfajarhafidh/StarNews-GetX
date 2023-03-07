@@ -18,7 +18,6 @@ class FormWidget extends GetView<PostArticleController> {
           ),
           TextField(
             controller: controller.postTitle,
-            autofocus: true,
             onSubmitted: (value){
               controller.reqFocus();
             },
@@ -57,7 +56,6 @@ class FormWidget extends GetView<PostArticleController> {
           Obx(() => GestureDetector(
                 onTap: () {
                   controller.isLoading.value ? null : controller.onSubmit();
-                  Logger().d(controller.onSubmit());
                 },                    
                 child: Container(
                   padding: const EdgeInsets.symmetric(

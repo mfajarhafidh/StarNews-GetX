@@ -30,7 +30,10 @@ class ListNews extends StatelessWidget {
               ]),
         padding: EdgeInsets.symmetric(vertical: 25, horizontal: 20),
         child: ListTile(
-          title: Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          title: Padding(
+            padding: const EdgeInsets.only(bottom: 15),
+            child: Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          ),
           subtitle: Text(description, style: TextStyle(color: Colors.black, fontSize: 16), maxLines: 3, overflow: TextOverflow.ellipsis),
         ),
       ),
