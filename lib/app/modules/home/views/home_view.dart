@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:getx_post/app/modules/home/widgets/list_news_widget.dart';
+import 'package:getx_post/app/routes/app_pages.dart';
+import 'package:skeletons/skeletons.dart';
 
 import '../controllers/home_controller.dart';
 
@@ -8,15 +11,37 @@ class HomeView extends GetView<HomeController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: Text('HomeView'),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Text(
-          'HomeView is working',
-          style: TextStyle(fontSize: 20),
+        backgroundColor: Colors.white,
+        elevation: 0.0,
+        title: Padding(
+          padding: const EdgeInsets.only(left: 20),
+          child: Text(
+            'StarNews',
+            style: TextStyle(color: Colors.black),
+          ),
         ),
+      ),
+      body: Obx(() => SingleChildScrollView(
+            child: controller.isLoading.value
+                ? SkeletonListTile(hasSubtitle: true, padding: EdgeInsets.all(30),)
+                : Column(
+                    children: [
+                      ...controller.listNews.reversed.map(
+                        (item) => ListNews(
+                          title: item.title,
+                          description: item.body,
+                          id: item.id.toString(),
+                        ),
+                      )
+                    ],
+                  ),
+          )),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => Get.toNamed(Routes.POST_ARTICLE),
+        backgroundColor: Color(0xFFD9D9D9),
+        child: const Icon(Icons.add, color: Colors.black),
       ),
     );
   }
