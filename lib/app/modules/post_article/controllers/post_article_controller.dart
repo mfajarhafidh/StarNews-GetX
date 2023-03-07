@@ -26,6 +26,7 @@ class PostArticleController extends GetxController {
       Logger().d(response);
       isLoading(false);
       Get.back();
+      Get.snackbar("Success!", "The Data has Been Posted");
     } catch (e) {
       isLoading(false);
     }
