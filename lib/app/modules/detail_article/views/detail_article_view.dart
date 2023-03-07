@@ -20,7 +20,7 @@ class DetailArticleView extends GetView<DetailArticleController> {
             )),
         elevation: 0.0,
         title: Text(
-          'Detail News',
+          'Detail Article',
           style: TextStyle(color: Colors.black),
         ),
       ),

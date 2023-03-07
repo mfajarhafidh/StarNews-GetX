@@ -1,12 +1,10 @@
 import 'package:get/get.dart';
-import 'package:logger/logger.dart';
 
-class NewsService {
+class DetailNewsService{
   final _connect = Get.find<GetConnect>();
 
-  Future<List> getNews() async {
-    final response = await _connect.get('posts');
-    Logger().d(response);
+  Future getDetailNews({required String id}) async {
+    final response = await _connect.get('posts/$id');
     if (!response.hasError) {
       return response.body!;
     } else {

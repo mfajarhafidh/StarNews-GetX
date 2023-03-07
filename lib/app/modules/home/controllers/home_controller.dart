@@ -18,8 +18,10 @@ class HomeController extends GetxController {
     isLoading(true);
     try {
       final response = await newsService.getNews();
+      
       response.map((v) {
-        print(v);
+        // print(v);
+        Logger().d(v);
         final news = ListNewsModel.fromJson(v);
         listNews.add(news);
       }).toList();
