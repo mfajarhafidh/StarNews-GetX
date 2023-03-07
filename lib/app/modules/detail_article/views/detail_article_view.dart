@@ -11,61 +11,40 @@ class DetailArticleView extends GetView<DetailArticleController> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        elevation: 0.0,
         leading: IconButton(
-          onPressed: (){
-            Get.back();
-          }, 
-          icon: Padding(
-            padding: const EdgeInsets.only(left: 20),
-            child: Icon(Icons.arrow_back_ios, size: 26, color: Colors.black),
-          )
-          ),
+            onPressed: () {
+              Get.back();
+            },
+            icon: Icon(
+              Icons.arrow_back_ios_new,
+              color: Colors.black,
+            )),
+        elevation: 0.0,
         title: Text(
           'Detail News',
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 26
-          ),
-          ),
-        centerTitle: true,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
-        child: ListView.builder(
-          itemCount: controller.titles.length, //<< fill with controller listener
-          itemBuilder: (context, index){
-            return Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              child: Card(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15)
-                ),
-                shadowColor: Colors.black,
-                color: Color(0xFFD9D9D9),
-                child: ListTile(
-                  contentPadding: EdgeInsets.only(left: 19, top: 26, bottom: 16, right: 19),
-                  onTap: (){},
-                  title: Padding(
-                    padding: const EdgeInsets.only(bottom: 15),
-                    child: Text(controller.titles[index], 
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 22,
-                      fontWeight: FontWeight.bold
-                    ),),
-                  ),
-                  subtitle: Text(controller.subtitles[index],
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontSize: 18,
-                  ),),
-                ),
-              ),
-            );
-          }
+          style: TextStyle(color: Colors.black),
         ),
-      )
+      ),
+      body: Container(
+        width: Get.width,
+        margin: EdgeInsets.all(24),
+        decoration: BoxDecoration(
+            color: Color(0xFFD9D9D9), borderRadius: BorderRadius.circular(15),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black54,
+                blurRadius: 5,
+                offset: Offset(0.0, 0.75)
+              )
+              ]),
+        padding: EdgeInsets.symmetric(vertical: 25, horizontal: 20),
+        child: Obx(
+          () => ListTile(
+            title: Text(controller.detailNews.value.title ?? '', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+          subtitle: Text(controller.detailNews.value.body ?? '', style: TextStyle(color: Colors.black, fontSize: 16)),
+          )
+          ),
+      ),
     );
   }
 }

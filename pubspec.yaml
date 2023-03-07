@@ -10,6 +10,7 @@ dependencies:
   get: 4.6.5
   easy_splash_screen: 1.0.4
   flutter_svg: 2.0.2
+  logger: 1.2.2
   flutter: 
     sdk: flutter
 
