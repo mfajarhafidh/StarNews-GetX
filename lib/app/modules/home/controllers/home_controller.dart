@@ -18,7 +18,6 @@ class HomeController extends GetxController {
     isLoading(true);
     try {
       final response = await newsService.getNews();
-      
       response.map((v) {
         // print(v);
         Logger().d(v);
