@@ -28,7 +28,7 @@ class NewsService {
       {
         'title': title,
         'body': desc,
-        'userId': 1,
+        'userId': 11,
       },
     );
     if (!response.hasError) {

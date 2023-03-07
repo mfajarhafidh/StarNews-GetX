@@ -11,6 +11,7 @@ dependencies:
   easy_splash_screen: 1.0.4
   flutter_svg: 2.0.2
   logger: 1.2.2
+  skeletons: 0.0.3
   flutter: 
     sdk: flutter
 
